@@ -1,0 +1,135 @@
+\input{preamble.tex}
+%\input{titlepage.tex}
+
+\begin{document}
+
+\newgeometry{left=3cm}
+	\include{titlepage-content}
+\restoregeometry
+
+\pagenumbering{roman}
+
+\clearpage
+\vspace*{\fill}
+\begin{center}
+	\begin{minipage}{.8\textwidth}
+		\thispagestyle{empty} % no pagenumber on affidavit
+		Diese Arbeit ist von mir selbst\"andig angefertigt und verfasst. Es sind keine anderen als die angegebenen Quellen und Hilfsmittel benutzt worden.\par
+		\vspace{1cm}
+		Frederic Klein \dotfill \par
+		Unterschrift
+	\end{minipage}
+\end{center}
+\vfill % equivalent to \vspace{\fill}
+\clearpage
+
+\spacing{1.5} % line spacing
+
+\begin{abstract}
+	\thispagestyle{plain}
+	\setcounter{page}{1}
+	\lipsum[1-3]
+\end{abstract}
+
+\tableofcontents
+\setcounter{page}{2}
+\listoffigures
+{\let\clearpage\relax \listoftables}
+
+\printnoidxglossary[type=\acronymtype,title={List of Acronyms}]
+
+{\let\clearpage\relax \printnoidxglossary[type=symbols,sort=letter]}
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+We will use this introduction chapter to introduce some formatting guidelines for writing your thesis.
+
+\section{Citations and Footnotes}
+Research has found that "this is a direct quotation" \autocite[p. 1]{Doe:1}. \textcite[p. 1]{Doe:1} found that "this is a direct quotation". On the other hand, if the direct quotation is paraphrased, we don't need the quotes; also we use pp. for multiple, consecutive pages \autocite[pp. 35-37]{Doe:2}.\par
+
+In the above paragraph we used \textit{authoryear} as citation scheme and add a descriptive footnote.\footnote{authoryear complies with the Harvard Reference Style}\par
+
+\section{Figures}
+The Corporate Design section on the FH Aachen website, is rather disappointing. Using the website logo, we get a higher resolution (see figure \ref{figure:fhLogo}) and use this logo for the title page.
+\begin{figure}[htbp] % h for placement here
+	\caption{The FH Logo \autocite[]{Online:FhAachen}}
+	\includegraphics[scale=0.7]{figures/FHLogoFromSVG.png}
+	\label{figure:fhLogo} % to reference it with \ref{figure:fhLogo}
+\end{figure}
+
+\section{Formulas}
+Simple formulas can be written in-line, e.g. \(x^2+5x+6=0\).
+\begin{samepage}
+	 Formulas, which need to be referenced in the text, should be numbered with chapter number and a continuous, 1 based counter per chapter. Let us assume our findings could be summarized as:
+	\nopagebreak
+	\begin{equation}
+		\label{eq:simple}
+		x^2+5x+6=0, x \in \gls{doubleR}
+	\end{equation}
+	Seeing that our result formula (compare \ref{eq:simple}) is solvable, we determine the solution (see \ref{eq:multi}), though we avoid the automatic numbering for equations that are not referenced by using \textit{\textbackslash nonumber}:
+	\nopagebreak
+	\begin{alignat}{3}
+		& \quad && x^2+5x+6                   \qquad && = 0  \nonumber \\
+		& \Leftrightarrow \quad && (2+x)(3+x) \qquad && = 0 \nonumber \\
+		& \Rightarrow     \quad && 2+x=0      \qquad && \lor \qquad 3+x=0 \nonumber \\
+		& \Rightarrow 	  \quad && x=-2       \qquad && \lor \qquad x =-0 \label{eq:multi} 
+	\end{alignat}
+\end{samepage}
+
+
+\section{Acronyms}
+When writing a scientific paper we might need to introduce abbreviations. When we want to use an abbreviation for a phrase, we insert the abbreviation in parentheses directly after the first usage of the phrase. We might for example describe used tools in a development process such as the \gls{JDK} version. Further references to the \gls{JDK} will be in form of the acronym.\par
+
+
+\section{Tables}
+
+\begin{center}
+\begin{table}[h]
+\caption[Format settings]{Some format settings used in this template}
+	\begin{tabular}{| l | c | p{8cm} |}
+		\hline
+		Margin Left & 1" & 2.54cm \\[5pt] \hline
+		Margin Top & 1" & 2.54cm \\ \hline
+		Margin Right & 1" & 2.54cm \\ \hline
+		Margin Bottom & 1" & 2.54cm \\ \hline
+		Fontsize & 12pt & Fontsize must be 10, 11 or 12 points; in this template the fontsize is set to 12pt.  \\ \hline
+	
+	\end{tabular}
+	
+\end{table}
+\end{center}
+		
+\chapter{Foundation}
+\lipsum[1]
+	\section{Foundation Section 1}
+	\lipsum[1-3]
+	\section{Foundation Section 2}
+	\lipsum[1-3]
+	\subsection*{Foundation Section 1}
+	\lipsum[1-3]
+	\subsection*{Foundation Section 2}
+	\lipsum[1-3]
+
+\chapter{Research}
+\lipsum[1]
+	\section{Research Section 1}
+	\lipsum[1-3]
+	\section{Research Section 2}
+	\lipsum[1-3]
+	\subsection*{Research Section 1}
+	\lipsum[1-3]
+	\subsection*{Research Section 2}
+	\lipsum[1-3]
+\chapter{Conclusion}
+\lipsum[1-3]
+
+\clearpage
+\renewcommand{\bibname}{References} % rename Bibliograpy to References
+\printbibliography[heading=bibintoc] % add References chapter and display it in toc
+
+\begin{appendices}
+	\chapter{Some name}
+	\lipsum[3]
+\end{appendices}
+
+\end{document}
